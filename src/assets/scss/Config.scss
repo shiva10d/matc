@@ -1,0 +1,56 @@
+@import "../../../node_modules/bootstrap/scss/functions";
+@import "../../../node_modules/bootstrap/scss/variables";
+@import "../../../node_modules/bootstrap/scss/mixins";
+@import "../../../node_modules/bootstrap/scss/bootstrap-utilities.scss";
+//font
+$theme-font-family: DM Sans;
+
+//theme-colour
+
+$primary: #ec2227;
+$highlight1: #b2aba5;
+$highlight2: #6f6763;
+$danger: #ee3524;
+$secondary: #faa74a;
+$brandcolor1: #002a54;
+$brandcolor2: #611912;
+$brandcolor3: #8095aa;
+$grey: #ebebeb;
+$light: #e5e5e5;
+$dark: #000000;
+$white:white;
+$grey1: #848484;
+$grey2: #A6A6A6;
+$grey3: #C4C4C4;
+$success: #32A071;
+
+
+$theme-colors: (
+  "primary": $primary,
+  "secondary": $secondary,
+  "danger": $danger,
+  "success": $success,
+  "light": $light,
+  "dark": $dark,
+);
+
+$custom-theme-colors: (
+  "highlight1": $highlight1,
+  "highlight2": $highlight2,
+  "brandcolor1": $brandcolor1,
+  "brandcolor2": $brandcolor2,
+  "brandcolor3": $brandcolor3,
+  "grey": $grey,
+  "grey1": $grey1,
+  "grey2": $grey2,
+  "grey3": $grey3,
+  'white':$white
+);
+
+$theme-colors: map-merge($theme-colors, $custom-theme-colors);
+$theme-colors-rgb: map-loop($theme-colors, to-rgb, "$value");
+$utilities-colors: map-merge($utilities-colors, $theme-colors-rgb);
+$utilities-text-colors: map-loop($utilities-colors, rgba-css-var, "$key", "text");
+$utilities-bg-colors: map-loop($utilities-colors, rgba-css-var, "$key", "bg");
+
+@import "bootstrap";
